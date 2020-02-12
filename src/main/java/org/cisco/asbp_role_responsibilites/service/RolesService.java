@@ -5,6 +5,8 @@ package org.cisco.asbp_role_responsibilites.service;
 
 import java.util.List;
 
+import org.cisco.asbp_role_responsibilites.domain.AssignRolesAndResponsibilitesDto;
+import org.cisco.asbp_role_responsibilites.domain.RoleAndResponsibilityMappingDto;
 import org.cisco.asbp_role_responsibilites.entity.ModuleConfigMapping;
 import org.cisco.asbp_role_responsibilites.entity.Role;
 import org.cisco.asbp_role_responsibilites.entity.RoleCategory;
@@ -38,9 +40,13 @@ public interface RolesService {
 
 	void deleteRoleCategory(Long roleId);
 	
+	RoleAndResponsibilityMappingDto getRoleAndResponsibilities();
+	
 	RoleCategory getRoleCategory(Long roleId);
 	
 	List<ModuleConfigMapping> getUserRolesModules(Long roleId,Long clientId);
+	
+	List<ModuleConfigMapping> addRolesAndResponsibilities(AssignRolesAndResponsibilitesDto assinRoles);
 	
 	
 	

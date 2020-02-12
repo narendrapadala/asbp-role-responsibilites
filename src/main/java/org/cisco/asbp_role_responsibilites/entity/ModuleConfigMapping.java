@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -81,10 +82,12 @@ public class ModuleConfigMapping implements Serializable {
 	@JoinColumn(name="module_feature_id",insertable=false,updatable=false)
 	private ModuleFeature moduleFeature;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="role_id",insertable=false,updatable=false)
 	private Role role;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="client_id",insertable=false,updatable=false)
 	private Client client;

@@ -59,6 +59,7 @@ public class Role implements Serializable {
 	@Column(name="description")
 	private String description;	
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="category_id",insertable=true,updatable=true)
 	private RoleCategory roleCategory;

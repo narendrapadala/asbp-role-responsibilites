@@ -9,6 +9,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ModuleConfigMappingRepository extends JpaRepository<ModuleConfigMapping, Long> {
 	
-	List<ModuleConfigMapping> findByRoleIdIn(List<Long> roleIds); 
+	List<ModuleConfigMapping> findByRoleIdIn(List<Long> roleIds);
+
+	List<ModuleConfigMapping> findByRoleId(Long roleId);
+
+	List<ModuleConfigMapping> findAllByIdRoleIdAndIdClientId(Long roleId,Long clientId);
+
+	void deleteByIdRoleIdAndIdClientId(Long roleId, Long clientId);
+
+	
 
 }

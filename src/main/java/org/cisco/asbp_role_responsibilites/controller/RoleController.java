@@ -1,8 +1,13 @@
 package org.cisco.asbp_role_responsibilites.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.cisco.asbp_common_utils.cu.model.GenericResponseDto;
+import org.cisco.asbp_role_responsibilites.domain.AssignRolesAndResponsibilitesDto;
+import org.cisco.asbp_role_responsibilites.domain.RoleAndResponsibilityMappingDto;
+import org.cisco.asbp_role_responsibilites.entity.ModuleConfigMapping;
 import org.cisco.asbp_role_responsibilites.entity.Role;
 import org.cisco.asbp_role_responsibilites.entity.RoleCategory;
 import org.cisco.asbp_role_responsibilites.service.RolesService;
@@ -78,12 +83,27 @@ public class RoleController {
 		return new GenericResponseDto.GenericResponseDtoBuilder<>(request, rolesService.getRoleCategory(roleCategoryId))
 				.build();
 	}
+	
+	@GetMapping("/getRoleAndResponsibilities")
+	public GenericResponseDto<RoleAndResponsibilityMappingDto> getRoleAndResponsibilities(HttpServletRequest request) {
+		return new GenericResponseDto.GenericResponseDtoBuilder<>(request, rolesService.getRoleAndResponsibilities())
+				.build();
+	}
+	
+	
 
 	@PostMapping("/addRoleCategory")
 	public GenericResponseDto<RoleCategory> addRole(@RequestBody RoleCategory role, HttpServletRequest request)
 			throws Exception {
 		return new GenericResponseDto.GenericResponseDtoBuilder<>("Role category saved sucessfully", request,
 				rolesService.saveRoleCategory(role)).build();
+	}
+	
+	@PostMapping("/addRolesAndResponsibilities")
+	public GenericResponseDto<List<ModuleConfigMapping>> addRolesAndResponsibilities(@RequestBody AssignRolesAndResponsibilitesDto assingRole, HttpServletRequest request)
+			throws Exception {
+		return new GenericResponseDto.GenericResponseDtoBuilder<>("Role and Responsibilities saved sucessfully", request,
+				rolesService.addRolesAndResponsibilities(assingRole)).build();
 	}
 
 	@PutMapping("/updateRoleCategory")

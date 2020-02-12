@@ -1,5 +1,7 @@
 package org.cisco.asbp_role_responsibilites.repository;
 
+import java.util.List;
+
 import org.cisco.asbp_role_responsibilites.entity.ModuleFeature;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +13,7 @@ public interface ModuleFeatureRepository extends JpaRepository<ModuleFeature, Lo
 
 	ModuleFeature findFirstById(Long moduleFeatureId);
 
-	Page<ModuleFeature> findAllByModuleId(Long moduleId, Pageable pageable);
-	
+	List<ModuleFeature> findAllByModuleId(Long moduleId);
+	Page<ModuleFeature> findAllByModuleId(Long moduleId,Pageable pageable);
 	
 }
